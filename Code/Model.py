@@ -47,6 +47,7 @@ class MultiTaskModel(nn.Module):
 
         # Ensure logits shape matches the number of classes
         logits = self.classification_head(pooled_output)  # (batch_size, num_classes)
+        logits = torch.sigmoid(logits)
 
         return logits
 
