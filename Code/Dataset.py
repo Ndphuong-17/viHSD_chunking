@@ -112,9 +112,9 @@ class TextDataset(torch.utils.data.Dataset):
         # Pad sentences if there are fewer than max_sentences
         while len(sentence_embeddings) < self.max_sentences:
             # Create dummy tensors filled with 0
-            dummy_input = torch.zeros((self.max_length,), dtype=torch.long)
-            dummy_mask = torch.zeros((self.max_length,), dtype=torch.long)
-            sentence_embeddings.append((dummy_input, dummy_mask))
+#             dummy_input = torch.zeros((self.max_length,), dtype=torch.long)
+#             dummy_mask = torch.zeros((self.max_length,), dtype=torch.long)
+            sentence_embeddings.append((input_ids, attention_mask))
 
         # Stack the tokenized sentences into tensors
         input_ids = torch.stack([item[0] for item in sentence_embeddings])  # Shape: (num_sentences, max_length)
